@@ -1,0 +1,78 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+<title>Bobcat Rabbitfoot</title>
+</head>
+<body>
+<div class="header"><h1 class="title">Bobcat Rabbitfoot</h1></div>
+  <div class="main">  
+    <div class="songs-layout">
+      <div class="songs">
+          <div class="song">
+              <p>Westbound Colorado</p>
+              <p><audio id="westbound-colorado" controls></audio></p>
+          </div>
+          <div class="song">
+              <p>Long Gone</p>
+              <p><audio id="long-gone" controls></audio></p>
+          </div>
+          <div class="song">
+              <p>Chaos You Left Me</p>
+              <p><audio id="chaos-you-left-me" controls></audio></p>
+          </div>
+      </div>
+      <div class="artist-info">
+        <img src="img/bobcat-rabbitfoot-256.png" width="256" height="256">
+        <p>Bobcat Rabbitfoot is a Denver Colorado based band playing a mix of orignals and covers in the style of roots, americana, cow punk, and bit of jamming thrown in for good measure</p>
+        <p>
+          Contact</br>
+          <a class="artist-links" href="mailto:bobcatrabbitfoot@gmail.com">bobcatrabbitfoot@gmail.com</a>
+        </p>
+        <hr>
+        <p><a class="artist-links" href="https://music.apple.com/us/artist/bobcat-rabbitfoot/1605070444">APPLE MUSIC</a></p>
+        <p><a class="artist-links" href="https://www.amazon.com/dp/B09QH7YH44/ref=dm_ws_ps_adp">AMAZON MUSIC</a></p>
+        <p><a class="artist-links" href="https://open.spotify.com/artist/6eHpgRQq8vu2qU07Hjy9UW?si=YzVKHAmiRFyopl5wqvcgwQ">SPOTIFY</a></p>
+        <p><a class="artist-links" href="https://www.youtube.com/channel/UCpwILH65WySt846MfNlKDEQ">YOUTUBE</a></p>
+        <p><a class="artist-links" href="javascript:alert('Coming soon...')">STORE</a></p>
+        <hr>
+        <p>Upcoming shows...</p>
+    </div>
+  </div>
+</div>
+<script src="js/hls.js"></script>
+<script type="module">
+  function hasNativeHLSSupport(elem) {
+    return Boolean(elem.canPlayType('application/vnd.apple.mpegURL') || elem.canPlayType('audio/mpegurl'))
+  }
+
+  const westbound_src = "media/westbound-colorado/westbound-colorado.m3u8";
+  const westbound_elem = document.getElementById('westbound-colorado');
+  const long_gone_src = "media/long-gone/long-gone.m3u8";
+  const long_gone_elem = document.getElementById('long-gone');
+  const chaos_src = "media/chaos-you-left-me/chaos-you-left-me.m3u8";
+  const chaos_elem = document.getElementById('chaos-you-left-me');
+
+  if (hasNativeHLSSupport(westbound_elem)) {
+    westbound_elem.src = westbound_src;
+    long_gone_elem.src = long_gone_src;
+    chaos_elem.src = chaos_src;
+  } else {
+    // fallback to using hls.js
+    const westbound_hls = new Hls({});
+    westbound_hls.loadSource(westbound_src);
+    westbound_hls.attachMedia(westbound_elem);
+
+    const long_gone_hls = new Hls({});
+    long_gone_hls.loadSource(long_gone_src);
+    long_gone_hls.attachMedia(long_gone_elem);
+
+    const chaos_hls = new Hls({});
+    chaos_hls.loadSource(chaos_src);
+    chaos_hls.attachMedia(chaos_elem);
+  }
+</script>
+
+<footer class="footer"><span>&copy; 2022 Bobcat Rabbitfoot</a></span></footer>
+</body>
